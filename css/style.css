@@ -151,6 +151,36 @@ body {
     text-align: right;
 }
 
+/* Confirmation Box Styles */
+.confirmation-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #fff0f6;
+    border-radius: 8px;
+    border: 1px solid #ffdeeb;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: left;
+}
+
+.checkbox-container input {
+    margin-top: 4px;
+    min-width: 18px;
+    min-height: 18px;
+    cursor: pointer;
+}
+
+.termos-texto {
+    line-height: 1.4;
+}
+
 /* Navigation Bar Styles */
 .navigation-bar {
     padding: 1rem 1.5rem;

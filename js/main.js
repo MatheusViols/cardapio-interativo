@@ -241,11 +241,28 @@ function renderizarResumo() {
                 <hr>
                 <p class="total-price">Total: R$ ${total.toFixed(2)}</p>
     `;
-	if (p.personalizacao.valor !== 'sem-topo') {
-			html += `<p><em>Observação: O valor do topo não está incluso e será negociado durante o pedido no whatsapp</em></p>`;
-	}
-	html += `	</div>
-	</section>
+    if (p.personalizacao.valor !== 'sem-topo') {
+        html += `<p><em>Observação: O valor do topo não está incluso e será negociado durante o pedido no whatsapp</em></p>`;
+    }
+    html += `
+            </div>
+            
+            <div class="confirmation-box">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="confirmTermos">
+                    <span class="checkmark"></span>
+                    <p class="termos-texto">Entendo que os valores podem variar dependendo da negociação do topo</p>
+                </label>
+            </div>
+
+            <div class="confirmation-box">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="confirmTermos">
+                    <span class="checkmark"></span>
+                    <p class="termos-texto">Entendo que o pagamento por cartão gera juros.</p>
+                </label>
+            </div>
+        </section>
     `;
 
     appContainer.innerHTML = html;
@@ -254,6 +271,12 @@ function renderizarResumo() {
 }
 
 function finalizarPedido() {
+    const checkbox = document.getElementById('confirmTermos');
+    if (!checkbox || !checkbox.checked) {
+        alert('Por favor, confirme que você leu e aceita os termos antes de finalizar.');
+        return;
+    }
+
     const p = estado.pedido;
     const mensagem = `Olá! Gostaria de encomendar um bolo:
 - Tamanho: ${p.tamanho.label}
