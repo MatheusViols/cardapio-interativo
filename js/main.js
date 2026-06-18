@@ -51,7 +51,7 @@ const perguntas = [
     {
         id: 'docesExtras',
         pergunta: 'Quantos doces extras na cobertura? (R$ 1,00 cada)',
-        imagem: 'assets/boloazul.jpg',
+        imagem: 'assets/chocolatedoces.jpg',
         tipo: 'number',
         min: 0,
         max: 25
@@ -59,7 +59,7 @@ const perguntas = [
     {
         id: 'personalizacao',
         pergunta: 'Escolher topo de bolo:',
-        imagem: 'assets/boloflorido.jpg',
+        imagem: 'assets/boloazul.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Sem topo', valor: 'sem-topo' },
