@@ -6,9 +6,9 @@ const perguntas = [
         imagem: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60',
         tipo: 'radio',
         opcoes: [
-            { label: 'Pequeno (P) - 6-8 fatias', valor: 'P', preco: 100 },
-            { label: 'Médio (M) - 12-15 fatias', valor: 'M', preco: 140 },
-            { label: 'Grande (G) - 22-25 fatias', valor: 'G', preco: 190 }
+            { label: 'Pequeno (P) - 8-10 fatias/1kg', valor: 'P', preco: 100 },
+            { label: 'Médio (M) - 12-15 fatias/2kg', valor: 'M', preco: 140 },
+            { label: 'Grande (G) - 22-25 fatias/3kg', valor: 'G', preco: 190 }
         ]
     },
     {
