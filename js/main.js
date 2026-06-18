@@ -240,7 +240,7 @@ function renderizarResumo() {
                 <p><strong>Doces Extras:</strong> ${p.docesExtras}</p>
                 <p><strong>Personalização:</strong> ${p.personalizacao.label}</p>
                 <hr>
-                <p class="total-price">Total: R$ ${total.toFixed(2)}</p>
+                <p class="total-price">A partir de: R$ ${total.toFixed(2)}</p>
     `;
     if (p.personalizacao.valor !== 'sem-topo') {
         html += `<p><em>Observação: O valor do topo não está incluso e será negociado durante o pedido no whatsapp</em></p>`;
@@ -290,7 +290,7 @@ function finalizarPedido() {
 - Cobertura: ${p.cobertura.label}
 - Doces Extras: ${p.docesExtras}
 - Personalização: ${p.personalizacao.label}
-- Total: R$ ${p.total.toFixed(2)}`;
+- A partir de: R$ ${p.total.toFixed(2)}`;
 
     const url = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
