@@ -3,7 +3,7 @@ const perguntas = [
     {
         id: 'tamanho',
         pergunta: 'Escolha o tamanho do seu bolo:',
-        imagem: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/batizado.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Pequeno (P) - 8-10 fatias/1kg', valor: 'P', preco: 100 },
@@ -14,7 +14,7 @@ const perguntas = [
     {
         id: 'massa',
         pergunta: 'Qual o sabor da massa?',
-        imagem: 'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/boloazulbranco.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Baunilha', valor: 'baunilha' },
@@ -24,7 +24,7 @@ const perguntas = [
     {
         id: 'recheio',
         pergunta: 'Escolha o recheio principal:',
-        imagem: 'https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/chaves.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Chocolate', valor: 'chocolate' },
@@ -41,7 +41,7 @@ const perguntas = [
     {
         id: 'cobertura',
         pergunta: 'Escolha a cobertura:',
-        imagem: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/roblox.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Chocolate', valor: 'chocolate' },
@@ -51,7 +51,7 @@ const perguntas = [
     {
         id: 'docesExtras',
         pergunta: 'Quantos doces extras na cobertura? (R$ 1,00 cada)',
-        imagem: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/boloazul.jpg',
         tipo: 'number',
         min: 0,
         max: 25
@@ -59,7 +59,7 @@ const perguntas = [
     {
         id: 'personalizacao',
         pergunta: 'Escolher topo de bolo:',
-        imagem: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&auto=format&fit=crop&q=60',
+        imagem: 'assets/boloflorido.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Sem topo', valor: 'sem-topo' },
@@ -240,8 +240,12 @@ function renderizarResumo() {
                 <p><strong>Personalização:</strong> ${p.personalizacao.label}</p>
                 <hr>
                 <p class="total-price">Total: R$ ${total.toFixed(2)}</p>
-            </div>
-        </section>
+    `;
+	if (p.personalizacao.valor !== 'sem-topo') {
+			html += `<p><em>Observação: O valor do topo não está incluso e será negociado durante o pedido no whatsapp</em></p>`;
+	}
+	html += `	</div>
+	</section>
     `;
 
     appContainer.innerHTML = html;
