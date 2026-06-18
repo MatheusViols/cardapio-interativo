@@ -44,8 +44,8 @@ const perguntas = [
         imagem: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&auto=format&fit=crop&q=60',
         tipo: 'radio',
         opcoes: [
-            { label: 'Chocolate', valor: 'chantininho' },
-            { label: 'Chantilly', valor: 'ganache' },
+            { label: 'Chocolate', valor: 'chocolate' },
+            { label: 'Chantilly', valor: 'chantilly' },
         ]
     },
     {
@@ -55,6 +55,17 @@ const perguntas = [
         tipo: 'number',
         min: 0,
         max: 25
+    },
+    {
+        id: 'personalizacao',
+        pergunta: 'Escolher topo de bolo:',
+        imagem: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&auto=format&fit=crop&q=60',
+        tipo: 'radio',
+        opcoes: [
+            { label: 'Sem topo', valor: 'sem-topo' },
+            { label: 'Com topo simples em papel fotografico', valor: 'topo-simples' },
+            { label: 'Com topo personalizado(nomes, frases, efeitos, flores)', valor: 'topo-personalizado' },
+        ]
     }
 ];
 
@@ -67,6 +78,7 @@ let estado = {
         recheio: null,
         cobertura: null,
         docesExtras: 0,
+	personalizacao: null,
         total: 0
     }
 };
@@ -225,6 +237,7 @@ function renderizarResumo() {
                 <p><strong>Recheio:</strong> ${p.recheio.label}</p>
                 <p><strong>Cobertura:</strong> ${p.cobertura.label}</p>
                 <p><strong>Doces Extras:</strong> ${p.docesExtras}</p>
+                <p><strong>Personalização:</strong> ${p.personalizacao.label}</p>
                 <hr>
                 <p class="total-price">Total: R$ ${total.toFixed(2)}</p>
             </div>
@@ -244,6 +257,7 @@ function finalizarPedido() {
 - Recheio: ${p.recheio.label}
 - Cobertura: ${p.cobertura.label}
 - Doces Extras: ${p.docesExtras}
+- Personalização: ${p.personalizacao.label}
 - Total: R$ ${p.total.toFixed(2)}`;
 
     const url = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
