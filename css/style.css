@@ -170,6 +170,10 @@ body {
     text-align: left;
 }
 
+.checkbox-container + .checkbox-container {
+    margin-top: 12px;
+}
+
 .checkbox-container input {
     margin-top: 4px;
     min-width: 18px;
@@ -216,4 +220,11 @@ body {
 
 .nav-btn:active {
     opacity: 0.8;
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
 }

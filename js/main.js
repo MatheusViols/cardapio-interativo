@@ -51,7 +51,7 @@ const perguntas = [
     {
         id: 'docesExtras',
         pergunta: 'Quantos doces extras na cobertura? (R$ 1,00 cada)',
-        imagem: 'assets/chocolatedoces.jpg',
+        imagem: 'assets/boloazul.jpg',
         tipo: 'number',
         min: 0,
         max: 25
@@ -59,7 +59,7 @@ const perguntas = [
     {
         id: 'personalizacao',
         pergunta: 'Escolher topo de bolo:',
-        imagem: 'assets/boloazul.jpg',
+        imagem: 'assets/boloflorido.jpg',
         tipo: 'radio',
         opcoes: [
             { label: 'Sem topo', valor: 'sem-topo' },
@@ -78,7 +78,7 @@ let estado = {
         recheio: null,
         cobertura: null,
         docesExtras: 0,
-	personalizacao: null,
+        personalizacao: null,
         total: 0
     }
 };
@@ -193,6 +193,7 @@ function atualizarBotoes() {
         nextBtn.innerText = 'Finalizar Pedido';
     } else {
         nextBtn.innerText = 'Próximo';
+        nextBtn.disabled = false;
     }
 }
 
@@ -249,15 +250,12 @@ function renderizarResumo() {
             
             <div class="confirmation-box">
                 <label class="checkbox-container">
-                    <input type="checkbox" id="confirmTermos">
+                    <input type="checkbox" id="confirmTopo">
                     <span class="checkmark"></span>
-                    <p class="termos-texto">Entendo que os valores podem variar dependendo da negociação do topo</p>
+                    <p class="termos-texto">Entendo que os valores podem variar dependendo da negociação do topo.</p>
                 </label>
-            </div>
-
-            <div class="confirmation-box">
                 <label class="checkbox-container">
-                    <input type="checkbox" id="confirmTermos">
+                    <input type="checkbox" id="confirmCartao">
                     <span class="checkmark"></span>
                     <p class="termos-texto">Entendo que o pagamento por cartão gera juros.</p>
                 </label>
@@ -268,15 +266,22 @@ function renderizarResumo() {
     appContainer.innerHTML = html;
     atualizarProgresso();
     atualizarBotoes();
+
+    // Lógica para desativar/ativar o botão com base nas checkboxes
+    const checkTopo = document.getElementById('confirmTopo');
+    const checkCartao = document.getElementById('confirmCartao');
+
+    if (checkTopo && checkCartao) {
+        const validar = () => {
+            nextBtn.disabled = !(checkTopo.checked && checkCartao.checked);
+        };
+        checkTopo.addEventListener('change', validar);
+        checkCartao.addEventListener('change', validar);
+        validar();
+    }
 }
 
 function finalizarPedido() {
-    const checkbox = document.getElementById('confirmTermos');
-    if (!checkbox || !checkbox.checked) {
-        alert('Por favor, confirme que você leu e aceita os termos antes de finalizar.');
-        return;
-    }
-
     const p = estado.pedido;
     const mensagem = `Olá! Gostaria de encomendar um bolo:
 - Tamanho: ${p.tamanho.label}
