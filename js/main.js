@@ -188,11 +188,13 @@ nextBtn.onclick = () => {
 
 function atualizarBotoes() {
     prevBtn.style.visibility = estado.etapaAtual === 0 ? 'hidden' : 'visible';
-    
+
     if (estado.etapaAtual >= perguntas.length) {
-        nextBtn.innerText = 'Finalizar Pedido';
+        nextBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Continuar pedido no whatsapp';
+        nextBtn.classList.add('whatsapp-btn');
     } else {
         nextBtn.innerText = 'Próximo';
+        nextBtn.classList.remove('whatsapp-btn');
         nextBtn.disabled = false;
     }
 }
